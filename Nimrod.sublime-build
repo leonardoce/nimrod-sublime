@@ -1,5 +1,5 @@
 {
-	"cmd": ["nimrod", "compile", "--run", "$file"],
+	"cmd": ["nimrod", "compile", "--checks:on", "--run", "$file"],
 	"file_regex": "[\n\r]([a-zA-Z0-9\\.]*)[(]([0-9]*), ([0-9]*)[)] ([^\n\r]*)",
-	"selector": "source.nim",
+	"selector": "source.nim"
 }
