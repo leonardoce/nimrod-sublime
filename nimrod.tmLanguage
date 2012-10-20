@@ -82,7 +82,7 @@
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>\b(block|break|case|continue|discard|do|elif|else|end|except|for|from|if|method|object|type|proc|return|when|while|with|without|import)\b</string>
+			<string>\b(block|break|case|continue|discard|do|elif|else|end|except|for|from|if|method|object|type|proc|return|when|while|with|without|import|var|let)\b</string>
 			<key>name</key>
 			<string>keyword.control.nimrod</string>
 		</dict>
