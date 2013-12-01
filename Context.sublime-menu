@@ -1,0 +1,8 @@
+[
+    {
+        "mnemonic": "g",
+        "caption": "Go To Definition",
+        "id": "lookup",
+        "command": "lookup"
+    }
+]
