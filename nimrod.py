@@ -27,21 +27,23 @@ class LookupCommand(sublime_plugin.TextCommand):
         #Parse the result
         value = self.parse(result)
 
-        self.open_definition(value[2], value[3], value[4])
+        if value is not None:
+            self.open_definition(value[2], value[3], value[4])
 
     def parse(self, result):
         p = re.compile('^(?P<cmd>\S+)\s(?P<ast>\S+)\s(?P<symbol>\S+)\s(?P<type>[^\t]+)\s(?P<path>[^\t]+)\s(?P<line>\d+)\s(?P<col>\d+)\s(?P<description>\".+\")?')
         m = p.match(result)
 
-        cmd = m.group("cmd")
+        if m is not None:
+            print(m)
+            cmd = m.group("cmd")
 
-        if cmd == "def":
-            return (m.group("symbol"), m.group("type"),
-             m.group("path"), m.group("line"), 
-             m.group("col"), m.group("description"))
+            if cmd == "def":
+                return (m.group("symbol"), m.group("type"),
+                 m.group("path"), m.group("line"), 
+                 m.group("col"), m.group("description"))
 
         return None
-
 
     def open_definition(self, filename, line, col):
         print(filename, line, col)
