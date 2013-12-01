@@ -15,8 +15,9 @@ Installation
 
 1. Locate your Sublime Text packages folder: in windows it will be 
    something like `%APPDATA%\Sublime Text 2\Packages`, in linux it 
-   will be `$HOME/.config/sublime-text-2/Packages/Nimrod/`. You can
-   also open the "Preferences" menu and choose "Browse Packages...";
+   will be `$HOME/.config/sublime-text-2/Packages/Nimrod/`, in MacOSX
+   it is `/Users/{user}/Library/Application Support/Sublime Text 2/Packages`.
+   You can also open the "Preferences" menu and choose "Browse Packages...";
 
 2. Put a copy of this repository in a "Nimrod" folder;
 
