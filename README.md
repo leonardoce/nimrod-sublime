@@ -1,9 +1,6 @@
 Nimrod syntax highlighting
 ==========================
 
-This repo has been forked to provide features missing in the parent repo.
-I take very little credit, and will only update this repo if I find a discrepancy.
-
 Added
 -----
 
