@@ -9,9 +9,9 @@
 		<string>nim</string>
 	</array>
 	<key>foldingStartMarker</key>
-	<string>(?i)^\s*(Public|Private)?\s*(Class|Function|Sub|Property)\s*([a-zA-Z_]\w*)\s*(\(.*\)\s*)?$</string>
+	<string>(?i)^\s*([a-zA-Z_]\w*)\s*(\(.*\)\s*)?$</string>
 	<key>foldingStopMarker</key>
-	<string>(?i)^\s*End (Class|Function|Sub|Property)\s*$</string>
+	<string>(?i)^\s*\s*$</string>
 	<key>keyEquivalent</key>
 	<string>^~A</string>
 	<key>name</key>
@@ -26,29 +26,9 @@
 					<key>name</key>
 					<string>storage.type.function.nimrod</string>
 				</dict>
-				<key>2</key>
-				<dict>
-					<key>name</key>
-					<string>entity.name.function.nimrod</string>
-				</dict>
-				<key>3</key>
-				<dict>
-					<key>name</key>
-					<string>punctuation.definition.parameters.nimrod</string>
-				</dict>
-				<key>4</key>
-				<dict>
-					<key>name</key>
-					<string>variable.parameter.function.nimrod</string>
-				</dict>
-				<key>5</key>
-				<dict>
-					<key>name</key>
-					<string>punctuation.definition.parameters.nimrod</string>
-				</dict>
 			</dict>
 			<key>match</key>
-			<string>^\s*((?i:function|sub))\s*([a-zA-Z_]\w*)\s*(\()([^)]*)(\)).*\n?</string>
+			<string>\b(proc|iterator|method|template|macro)\b</string>
 			<key>name</key>
 			<string>meta.function.nimrod</string>
 		</dict>
@@ -67,48 +47,82 @@
 			<string>comment.line.apostrophe.nimrod</string>
 		</dict>
 		<dict>
-			<key>captures</key>
+			<key>begin</key>
+			<string>discard """</string>
+			<key>beginCaptures</key>
 			<dict>
-				<key>1</key>
+				<key>0</key>
 				<dict>
 					<key>name</key>
-					<string>punctuation.definition.comment.nimrod</string>
+					<string>punctuation.definition.comment.begin.nimrod</string>
 				</dict>
 			</dict>
-			<key>match</key>
-			<string>(REM ).*$\n?</string>
+			<key>end</key>
+			<string>"""</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.comment.end.nimrod</string>
+				</dict>
+			</dict>
 			<key>name</key>
-			<string>comment.line.rem.nimrod</string>
+			<string>comment.line.apostrophe.nimrod</string>
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>\b(block|break|case|continue|discard|do|elif|else|end|except|for|from|if|method|object|type|proc|return|when|while|with|without|import|var|let|const)\b</string>
+			<string>\b(block|break|case|continue|discard|do|elif|else|end|except|try|finally|for|from|if|method|object|type|return|when|while|with|without|import|export|include|var|let|const|raise|echo|yield|assert|ref|ptr)\b</string>
 			<key>name</key>
 			<string>keyword.control.nimrod</string>
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>(\b(and|or|not|xor|shl|shr|div|mod|in|notin|is|isnot|of)\b|(=|\+|-|\*|/|&lt;|&gt;|@|\$|~|&amp;|%|!|\?|\^|\.|:|\\)+)</string>
+			<string>(\b(not|xor|shl|shr|div|mod|in|notin|is|isnot|of|and|or)\b|(=|\+|-|\*|/|&lt;|&gt;|@|\$|~|&amp;|%|!|\?|\^|\.|:|\\)+)</string>
 			<key>name</key>
 			<string>keyword.operator.nimrod</string>
 		</dict>
 		<dict>
 			<key>match</key>
-			<string>\b(addr|atomic|const|enum|export|ptr|ref|static|template|tuple|var|with|without)\b</string>
+			<string>\b(addr|atomic|const|enum|static|tuple|var|with|without|char|bool|int|int8|int16|int32|int64|uint|uint8|uint16|uint32|uint64|float|float32|float64|string|typedesc|seq|stmt|expr)\b</string>
 			<key>name</key>
 			<string>storage.type.nimrod</string>
 		</dict>
-		<!--dict>
-			<key>match</key>
-			<string>(?i:\b(Private|Public|Default)\b)</string>
-			<key>name</key>
-			<string>storage.modifier.nimrod</string>
-		</dict-->
 		<dict>
 			<key>match</key>
-			<string>(?i:\b(nil)\b)</string>
+			<string>(?i:\*)</string>
+			<key>name</key>
+			<string>storage.modifier.nimrod</string>
+		</dict>
+		<dict>
+			<key>match</key>
+			<string>(?i:\b(nil|true|false|[0-9]+)\b)</string>
 			<key>name</key>
 			<string>constant.language.nimrod</string>
+		</dict>
+		<dict>
+			<key>begin</key>
+			<string>"""</string>
+			<key>beginCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.string.begin.nimrod</string>
+				</dict>
+			</dict>
+			<key>end</key>
+			<string>"""</string>
+			<key>endCaptures</key>
+			<dict>
+				<key>0</key>
+				<dict>
+					<key>name</key>
+					<string>punctuation.definition.string.end.nimrod</string>
+				</dict>
+			</dict>
+			<key>name</key>
+			<string>string.quoted.double.nimrod</string>
 		</dict>
 		<dict>
 			<key>begin</key>
@@ -122,7 +136,7 @@
 				</dict>
 			</dict>
 			<key>end</key>
-			<string>"(?!")</string>
+			<string>"</string>
 			<key>endCaptures</key>
 			<dict>
 				<key>0</key>
@@ -133,78 +147,13 @@
 			</dict>
 			<key>name</key>
 			<string>string.quoted.double.nimrod</string>
-			<key>patterns</key>
-			<array>
-				<dict>
-					<key>match</key>
-					<string>""</string>
-					<key>name</key>
-					<string>constant.character.escape.apostrophe.nimrod</string>
-				</dict>
-			</array>
 		</dict>
-		<!--dict>
-			<key>captures</key>
-			<dict>
-				<key>1</key>
-				<dict>
-					<key>name</key>
-					<string>punctuation.definition.variable.nimrod</string>
-				</dict>
-			</dict>
-			<key>match</key>
-			<string>(\$)[a-zA-Z_x7f-xff][a-zA-Z0-9_x7f-xff]*?\b</string>
-			<key>name</key>
-			<string>variable.other.nimrod</string>
-		</dict>
-		<dict>
-			<key>match</key>
-			<string>(?i:\b(Application|ObjectContext|Request|Response|Server|Session)\b)</string>
-			<key>name</key>
-			<string>support.class.nimrod</string>
-		</dict>
-		<dict>
-			<key>match</key>
-			<string>(?i:\b(Contents|StaticObjects|ClientCertificate|Cookies|Form|QueryString|ServerVariables)\b)</string>
-			<key>name</key>
-			<string>support.class.collection.nimrod</string>
-		</dict>
-		<dict>
-			<key>match</key>
-			<string>(?i:\b(TotalBytes|Buffer|CacheControl|Charset|ContentType|Expires|ExpiresAbsolute|IsClientConnected|PICS|Status|ScriptTimeout|CodePage|LCID|SessionID|Timeout)\b)</string>
-			<key>name</key>
-			<string>support.constant.nimrod</string>
-		</dict>
-		<dict>
-			<key>match</key>
-			<string>(?i:\b(Lock|Unlock|SetAbort|SetComplete|BianryRead|AddHeader|AppendToLog|BinaryWrite|Clear|End|Flush|Redirect|Write|CreateObject|HTMLEncode|MapPath|URLEncode|Abandon)\b)</string>
-			<key>name</key>
-			<string>support.function.nimrod</string>
-		</dict>
-		<dict>
-			<key>match</key>
-			<string>(?i:\b(Application_OnEnd|Application_OnStart|OnTransactionAbort|OnTransactionCommit|Session_OnEnd|Session_OnStart|Class_Initialize|Class_Terminate)\b)</string>
-			<key>name</key>
-			<string>support.function.event.nimrod</string>
-		</dict>
-		<dict>
-			<key>match</key>
-			<string>(?i:\b(Array|Add|Asc|Atn|CBool|CByte|CCur|CDate|CDbl|Chr|CInt|CLng|Conversions|Cos|CreateObject|CSng|CStr|Date|DateAdd|DateDiff|DatePart|DateSerial|DateValue|Day|Derived|Math|Escape|Eval|Exists|Exp|Filter|FormatCurrency|FormatDateTime|FormatNumber|FormatPercent|GetLocale|GetObject|GetRef|Hex|Hour|InputBox|InStr|InStrRev|Int|Fix|IsArray|IsDate|IsEmpty|IsNull|IsNumeric|IsObject|Item|Items|Join|Keys|LBound|LCase|Left|Len|LoadPicture|Log|LTrim|RTrim|Trim|Maths|Mid|Minute|Month|MonthName|MsgBox|Now|Oct|Remove|RemoveAll|Replace|RGB|Right|Rnd|Round|ScriptEngine|ScriptEngineBuildVersion|ScriptEngineMajorVersion|ScriptEngineMinorVersion|Second|SetLocale|Sgn|Sin|Space|Split|Sqr|StrComp|String|StrReverse|Tan|Time|Timer|TimeSerial|TimeValue|TypeName|UBound|UCase|Unescape|VarType|Weekday|WeekdayName|Year)\b)</string>
-			<key>name</key>
-			<string>support.function.vb.nimrod</string>
-		</dict>
-		<dict>
-			<key>match</key>
-			<string>\b((0(x|X)[0-9a-fA-F]*)|(([0-9]+\.?[0-9]*)|(\.[0-9]+))((e|E)(\+|-)?[0-9]+)?)(L|l|UL|ul|u|U|F|f)?\b</string>
-			<key>name</key>
-			<string>constant.numeric.nimrod</string>
-		</dict>
-		<dict>
-			<key>match</key>
-			<string>(?i:\b(vbtrue|fvbalse|vbcr|vbcrlf|vbformfeed|vblf|vbnewline|vbnullchar|vbnullstring|vbtab|vbverticaltab|vbbinarycompare|vbtextcomparevbsunday|vbmonday|vbtuesday|vbwednesday|vbthursday|vbfriday|vbsaturday|vbusesystemdayofweek|vbfirstjan1|vbfirstfourdays|vbfirstfullweek|vbgeneraldate|vblongdate|vbshortdate|vblongtime|vbshorttime|vbobjecterror|vbEmpty|vbNull|vbInteger|vbLong|vbSingle|vbDouble|vbCurrency|vbDate|vbString|vbObject|vbError|vbBoolean|vbVariant|vbDataObject|vbDecimal|vbByte|vbArray)\b)</string>
-			<key>name</key>
-			<string>support.type.vb.nimrod</string>
-		</dict-->
+        <dict>
+            <key>match</key>
+            <string>'(\\\d{1,3}|\\?[^\n]?)'</string>
+            <key>name</key>
+            <string>string.quoted.single.nimrod</string>
+        </dict>
 	</array>
 	<key>scopeName</key>
 	<string>source.nimrod</string>
